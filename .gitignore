@@ -1,0 +1,25 @@
+# Environment
+.env
+.venv/
+__pycache__/
+*.pyc
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Docker
+pgdata/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docs source files
+файлы_хакатон_УТО/
+*.docx
+*.pdf
+
+# Claude
+.claude/

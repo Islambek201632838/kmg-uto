@@ -1,0 +1,35 @@
+# Backend
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+
+# Database
+sqlalchemy==2.0.35
+asyncpg==0.30.0
+psycopg2-binary==2.9.9
+alembic==1.13.3
+
+# Config
+pydantic-settings==2.5.2
+python-dotenv==1.0.1
+
+# Graph & Spatial
+networkx==3.3
+scipy==1.14.1
+numpy==1.26.4
+
+# VRP Solver
+ortools==9.10.4067
+
+# Data
+pandas==2.2.3
+
+# Frontend & Maps
+streamlit==1.38.0
+streamlit-folium==0.22.0
+folium==0.17.0
+
+# HTTP client (streamlit -> api)
+httpx==0.27.2
+
+# LLM (Gemini для reason генерации)
+google-generativeai==0.8.5

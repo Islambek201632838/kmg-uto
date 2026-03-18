@@ -1,0 +1,10 @@
+.env
+__pycache__
+*.pyc
+.git
+файлы_хакатон_УТО
+*.docx
+*.pdf
+*.pptx
+PLAN.md
+pgdata
