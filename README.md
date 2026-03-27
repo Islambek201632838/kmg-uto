@@ -75,7 +75,7 @@ score(vk, jl) = 1 - (ωd·D_norm + ωt·ETA_norm + ωw·wait_norm + ωp·penalty
 
 ```bash
 # 1. Клонировать репозиторий
-git clone <repo-url> && cd iso_uto
+git clone <repo-url> && cd is_uto
 
 # 2. Создать .env из примера и заполнить пароли
 cp .env.example .env
