@@ -3,8 +3,8 @@ services:
     image: postgres:17
     container_name: uto-db
     restart: unless-stopped
-    ports:
-      - "${DB_PORT:-5434}:5432"
+    expose:
+      - "5432"
     environment:
       POSTGRES_DB: ${DB_NAME:-mock_uto}
       POSTGRES_USER: ${DB_USER:-kmg_user}
