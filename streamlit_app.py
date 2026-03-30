@@ -666,6 +666,8 @@ elif mode == "🎯 Демо-сценарии":
             st.success(f"💡 {r['reason']}")
 
             st.markdown("**Группы:**")
+            assigned = r.get("assigned_vehicles", [])
             for gi, group in enumerate(r["groups"]):
                 label = "multi-stop" if len(group) > 1 else "отдельно"
-                st.markdown(f"  Группа {gi+1} ({label}): {', '.join(group)}")
+                vehicle_name = assigned[gi].get("name", "—") if gi < len(assigned) else "—"
+                st.markdown(f"  Группа {gi+1} ({label}): {', '.join(group)} → **{vehicle_name}**")

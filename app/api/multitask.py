@@ -108,9 +108,20 @@ def _solve_multitask(G, fleet, tasks_by_id, task_ids, constraints):
     reason = _build_reason(groups, task_ids, optimized_km, baseline_km, savings)
 
     # Map groups to assigned vehicles with names
+    # VRP-assigned groups have vehicle from result.assigned_vehicles
+    # Unassigned groups get vehicle from baseline_map (nearest vehicle)
+    vrp_group_count = len(result.groups)
     assigned_map = []
     for i, group in enumerate(groups):
-        vehicle_id = result.assigned_vehicles[i] if i < len(result.assigned_vehicles) else None
+        if i < vrp_group_count:
+            vehicle_id = result.assigned_vehicles[i] if i < len(result.assigned_vehicles) else None
+        else:
+            # Unassigned task — get nearest vehicle from baseline
+            tid = group[0]
+            t = tasks_by_id[tid]
+            _, vehicle_id = baseline_map.get(t.target_node, (0, None))
+            if vehicle_id == -1:
+                vehicle_id = None
         vehicle_name = fleet.vehicles[vehicle_id].name if vehicle_id and vehicle_id in fleet.vehicles else "—"
         assigned_map.append({"tasks": group, "wialon_id": vehicle_id, "name": vehicle_name})
 
