@@ -112,6 +112,7 @@ class MultitaskRequest(BaseModel):
 class MultitaskResponse(BaseModel):
     """Результат оптимизации: группы заявок + экономия."""
     groups: list[list[str]] = Field(..., description="Группы заявок (каждая группа = один маршрут)")
+    assigned_vehicles: list[dict] = Field([], description="Назначенные машины: [{tasks, wialon_id, name}]")
     strategy_summary: StrategyType = Field(..., description="Стратегия: single_unit / mixed / separate")
     total_distance_km: float = Field(..., description="Суммарное расстояние оптимизированного плана (км)")
     total_time_minutes: float = Field(..., description="Суммарное время оптимизированного плана (мин)")

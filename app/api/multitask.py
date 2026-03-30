@@ -107,8 +107,16 @@ def _solve_multitask(G, fleet, tasks_by_id, task_ids, constraints):
 
     reason = _build_reason(groups, task_ids, optimized_km, baseline_km, savings)
 
+    # Map groups to assigned vehicles with names
+    assigned_map = []
+    for i, group in enumerate(groups):
+        vehicle_id = result.assigned_vehicles[i] if i < len(result.assigned_vehicles) else None
+        vehicle_name = fleet.vehicles[vehicle_id].name if vehicle_id and vehicle_id in fleet.vehicles else "—"
+        assigned_map.append({"tasks": group, "wialon_id": vehicle_id, "name": vehicle_name})
+
     return {
         "groups": groups,
+        "assigned_vehicles": assigned_map,
         "strategy_summary": strategy,
         "total_distance_km": round(optimized_km, 1),
         "total_time_minutes": round(result.total_time_minutes + unassigned_time, 1),
